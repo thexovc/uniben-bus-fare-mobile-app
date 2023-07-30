@@ -1,14 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Dashboard from "./screens/Dashboard";
-import Login from "./screens/Login";
-import Register from "./screens/Register";
+
 import { Entypo, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import Activity from "./screens/Activity";
 import { useFonts } from "expo-font";
 import SettingScreen from "./screens/SettingScreen";
-import Toast from "react-native-toast-message";
-import { toastConfig } from "./utils/CustomToast";
 
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
