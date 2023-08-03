@@ -14,7 +14,7 @@ const SettingScreen = () => {
         <View className="h-2/5 p-4 justify-center space-y-5">
           <Text className="text-2xl font-bold text-center">About</Text>
           <Text className="text-base text-center">
-            Uniben Bus Fare Mobile Platform
+            Uniben Shuttle Pay Mobile Platform
           </Text>
           <Text className="text-base text-center text-orange-700">
             Transport with ease

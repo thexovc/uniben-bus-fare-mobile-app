@@ -15,31 +15,29 @@ const QrCODE = ({ visible, setQrcodeToggle }) => {
 
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
-      <SafeAreaView className="flex-1">
-        <BlurView className="flex-1 " intensity={100} tint="dark">
-          <View className="h-2/3 mt-10 border-[1px] border-gray-600 rounded-xl m-auto w-[90%]  bg-white">
-            <Pressable
-              onPress={() => setQrcodeToggle(false)}
-              className="w-full p-3 flex-row justify-end"
-            >
-              <Ionicons name="close-circle-sharp" size={24} color="black" />
-            </Pressable>
+      <BlurView className="flex-1 " intensity={100} tint="dark">
+        <View className="h-2/3 mt-10 border-[1px] border-gray-600 rounded-xl m-auto w-[90%]  bg-white">
+          <Pressable
+            onPress={() => setQrcodeToggle(false)}
+            className="w-full p-3 flex-row justify-end"
+          >
+            <Ionicons name="close-circle-sharp" size={24} color="black" />
+          </Pressable>
 
-            <View className="flex-1 justify-center space-y-8 items-center">
-              <Text className="text-center text-lg font-semibold">
-                Scan QRCODE to make Payment
-              </Text>
+          <View className="flex-1 justify-center space-y-8 items-center">
+            <Text className="text-center text-lg font-semibold">
+              Scan QRCODE to make Payment
+            </Text>
 
-              <Image
-                source={{
-                  uri: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=userID:${user?.email}`,
-                }}
-                className="w-60 h-60"
-              />
-            </View>
+            <Image
+              source={{
+                uri: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=userID:${user?.email}`,
+              }}
+              className="w-60 h-60"
+            />
           </View>
-        </BlurView>
-      </SafeAreaView>
+        </View>
+      </BlurView>
     </Modal>
   );
 };

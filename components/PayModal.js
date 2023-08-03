@@ -10,9 +10,13 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 
-const PayModal = ({ visible, setPayToggle, setScanToggle }) => {
-  const [userID, setUserID] = useState("");
-
+const PayModal = ({
+  visible,
+  setPayToggle,
+  setScanToggle,
+  setAmountToPay,
+  amountToPay,
+}) => {
   const handleQRCODE = () => {
     setPayToggle(false);
     setScanToggle(true);
@@ -34,17 +38,20 @@ const PayModal = ({ visible, setPayToggle, setScanToggle }) => {
               <View className="min-h-3/5 space-y-4 items-center">
                 <Text className="mt-4 text-lg">Send Bus Fee By User ID</Text>
                 <Text className="mt-4 text-lg text-orange-400">
-                  Bus Fee: ₦70
+                  Bus Fee: ₦{amountToPay}
                 </Text>
-                {/* <TextInput
-                  onChangeText={(text) => userID(text)}
+                <TextInput
+                  onChangeText={(text) => setAmountToPay(text)}
                   className="border-[1px] border-gray-400 rounded-md p-4 w-5/6 text-lg"
-                  placeholder="User ID"
+                  placeholder="Amount To Pay"
                 />
-                <TouchableOpacity className="h-3/12 bg-purple-600 space-x-5 py-4 w-2/3 flex-row items-center justify-center rounded-lg">
+                <TouchableOpacity
+                  onPress={handleQRCODE}
+                  className="h-3/12 bg-purple-600 space-x-5 py-4 w-2/3 flex-row items-center justify-center rounded-lg"
+                >
                   <Text className="text-white font-bold text-xl">Send</Text>
                   <Ionicons name="ios-exit-sharp" size={24} color="white" />
-                </TouchableOpacity> */}
+                </TouchableOpacity>
               </View>
 
               <View className="flex-1 mb-8 mt-8 flex-row items-center justify-center">

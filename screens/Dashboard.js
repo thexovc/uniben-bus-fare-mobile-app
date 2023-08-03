@@ -43,7 +43,7 @@ const Dashboard = ({ navigation }) => {
         .then((res) => {
           // console.log(res.data);
 
-          setTrx(res.data);
+          setTrx(res.data.reverse());
         });
       await axios
         .post(`${DB_URL}/api/trxCount`, {
@@ -82,6 +82,7 @@ const Dashboard = ({ navigation }) => {
   const [scanToggle, setScanToggle] = useState(false);
   const [qrcodeToggle, setQrcodeToggle] = useState(false);
   const [helpToggle, setHelpToggle] = useState(false);
+  const [amountToPay, setAmountToPay] = useState("0");
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -154,11 +155,6 @@ const Dashboard = ({ navigation }) => {
                 <FontAwesome name="send" size={24} color="black" />
               </TouchableOpacity>
             )}
-
-            <TouchableOpacity className="h-full flex-1 rounded-lg items-center py-4 justify-between bg-red-400">
-              <FontAwesome name="bank" size={24} color="black" />
-              <Text className="text-xl font-bold ">Withdraw</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -168,6 +164,8 @@ const Dashboard = ({ navigation }) => {
           setPayToggle={setPayToggle}
           setScanToggle={setScanToggle}
           visible={payToggle}
+          setAmountToPay={setAmountToPay}
+          amountToPay={amountToPay}
         />
       )}
       {depositToggle && (
@@ -180,6 +178,7 @@ const Dashboard = ({ navigation }) => {
         <BarcodeScannerScreen
           visible={scanToggle}
           setScanToggle={setScanToggle}
+          amountToPay={amountToPay}
         />
       )}
       {qrcodeToggle && (
@@ -227,7 +226,7 @@ const Dashboard = ({ navigation }) => {
                     "Paid for Bus Fee In Uniben"}
                   {item.status != "pay" && "Deposited Into Bus Fare"}
                 </Text>
-                <Text>12:44 PM 4TH 2023</Text>
+                <Text>{Date(trx.createdAt).slice(0, 16)}</Text>
               </View>
 
               {user?.userType == "student" ? (

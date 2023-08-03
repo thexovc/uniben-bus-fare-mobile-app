@@ -11,7 +11,11 @@ import { UserContext } from "../context/UserContext";
 import axios from "axios";
 import { DB_URL } from "../config";
 
-export default function BarcodeScannerScreen({ setScanToggle, visible }) {
+export default function BarcodeScannerScreen({
+  setScanToggle,
+  visible,
+  amountToPay,
+}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [scannedData, setScannedData] = useState("");
@@ -39,7 +43,7 @@ export default function BarcodeScannerScreen({ setScanToggle, visible }) {
           receiverEmail: extractedData,
           senderEmail: user?.email,
           userEmail: user?.email,
-          amount: 70,
+          amount: Number(amountToPay),
         })
         .then((res) => {
           console.log(res.data);
